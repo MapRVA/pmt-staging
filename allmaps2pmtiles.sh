@@ -11,13 +11,17 @@ curl "$1" | \
   bash
 
 url=$1
-img_id=${url##*/}
+echo $url
+
 img_name=$(ls | grep .*${url##*/}.*-warped)
+echo $img_name
 
 out_name="$2.pmtiles"
+echo $out_name
 
-# Convert GeoTiff to pmtiles using rio-pmtiles
+# # Convert GeoTiff to pmtiles using rio-pmtiles
 uv run rio pmtiles --rgba ${img_name} ${out_name}
 
 # rename to *.gz to play nicely with GH Pages
-mv ${out_name} "${out_name}.gz"
+mkdir dist
+mv ${out_name} "dist/${out_name}.gz"
