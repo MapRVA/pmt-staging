@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install GDAL
-        run: apt install gdal-bin
+        run: sudo apt install gdal-bin
 
       - name: Install Allmaps CLI
         run: npm install -g @allmaps/cli
