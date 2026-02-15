@@ -31,7 +31,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install GDAL
-        run: sudo apt install gdal-bin libgdal-dev
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ppa \
+          && sudo apt update \
+          && sudo apt install gdal-bin python3-gdal libgdal-dev
 
       - name: Install Allmaps CLI
         run: npm install -g @allmaps/cli
